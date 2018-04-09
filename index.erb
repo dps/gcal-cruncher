@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title><%= me %> - time spent</title>
+</head>
+<body style="font-family: monospace;">
+<h1 style="display: flex;justify-content: center;">📅 <%= me %> - time spent: <%= start_date %> to <%= end_date %></h1>
+
+<div id="container" style="display: flex;justify-content: center;">
+<div style="">
+<table>
+  <h2>1:1 Time</h2>
+<tbody>
+  <% oow.each do |person,mins| %>
+    <tr>
+      <td><%= person %></td>
+      <td><%= mins.to_i %></td>
+      <td><div style="width: <%= ((mins.to_i / max_oow) * 100).to_i %>px; height:16px; background-color:blue;"></div></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+</div>
+<div id="spacer" style="width:80px;height:80px;">
+  &nbsp;
+</div>
+<div style="">
+<table>
+  <h2>Group Time (includes 1:1 time)</h2>
+<tbody>
+  <% tw.each do |person,mins| %>
+    <tr>
+      <td><%= person %></td>
+      <td><%= mins.to_i %></td>
+      <td><div style="width: <%= ((mins.to_i / max_tw) * 100).to_i %>px; height:16px; background-color:blue;"></div></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+</div>
+</div>
+</body>
+</html>
